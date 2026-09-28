@@ -27,6 +27,7 @@ function createWindow(): void {
     minHeight: 600,
     show: false,
     title: 'Workspace Launcher',
+    icon: path.join(app.getAppPath(), 'assets', 'icon.png'),
     backgroundColor: '#0b0e14',
     autoHideMenuBar: true,
     webPreferences: {
