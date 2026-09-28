@@ -80,8 +80,10 @@ export const useStore = create<LauncherState>((set, get) => ({
 
   appendLog: (entry) =>
     set((s) => {
-      const next = [entry, ...s.logs].slice(0, 300)
-      return { logs: next }
+      const rest = s.logs.filter(
+        (l) => !(l.profileId === entry.profileId && l.actionId === entry.actionId),
+      )
+      return { logs: [entry, ...rest].slice(0, 300) }
     }),
 
   clearLogs: () => set({ logs: [] }),
