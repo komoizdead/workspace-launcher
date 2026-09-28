@@ -4,6 +4,8 @@ Launch your entire workspace — desktop apps, browser tabs, terminal commands, 
 
 Built with **Electron + React + TypeScript + Tailwind CSS**. State is persisted locally via `electron-store` (JSON in the OS user-data directory).
 
+![Workspace Launcher dashboard with workspace cards](assets/screenshots/dashboard.png)
+
 ## Download
 
 Grab the latest installer from the [**Releases**](https://github.com/komoizdead/workspace-launcher/releases/latest) page — Windows (x64) installer, no admin rights required. macOS (`.dmg`) and Linux (AppImage) builds can be produced from source with `npm run dist`.
@@ -24,6 +26,16 @@ Grab the latest installer from the [**Releases**](https://github.com/komoizdead/
 - **Health checks** — optionally skip an action if its process or localhost port is already running
 - **Live launch log** — real-time success / failure / skipped status per action
 
+## Screenshots
+
+*Live launch log — real-time status per action (success, skipped, running):*
+
+![Live launch log with an in-progress launch](assets/screenshots/launch-log.png)
+
+*Workspace editor — drag-and-drop actions, per-action delays, env vars, global hotkeys:*
+
+![Workspace editor showing a dev server command and environment variables](assets/screenshots/profile-editor.png)
+
 ## Quickstart
 
 ```bash
@@ -39,6 +51,7 @@ npm run dev
 |---|---|
 | `npm run build` | Type-check, build renderer to `dist/`, bundle main/preload to `dist-electron/` |
 | `npm start` | Run the app from the built output (requires `npm run build` first) |
+| `npm run screenshots` | Regenerate the README screenshots into `assets/screenshots/` (runs the real app against throwaway demo data) |
 | `npm run dist` | Package with electron-builder (NSIS on Windows, DMG on macOS, AppImage on Linux) |
 
 ## Project layout
@@ -56,7 +69,9 @@ workspace-launcher/
 │   ├── components/             # ProfileList, ProfileEditor (dnd-kit), LaunchLogger
 │   ├── store/useStore.ts       # zustand state
 │   └── types/workspace.ts      # shared Profile / Action / Log types
-└── assets/tray.png             # tray icon
+├── scripts/
+│   └── capture-screenshots.cjs # regenerates the README screenshots
+└── assets/                     # app icon, tray icon, README screenshots
 ```
 
 ## OS command mapping
